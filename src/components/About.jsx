@@ -1,10 +1,9 @@
 import React from 'react'
+import Maintenance from './Maintenance';
 
 function About() {
     return (
-        <div style={{ margin: '3em', display: 'inline-block' }}>
-            <h1>Página em construção.</h1>
-        </div>
+        <Maintenance />
     );
 }
 

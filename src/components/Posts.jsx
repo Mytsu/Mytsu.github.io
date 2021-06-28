@@ -1,11 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Maintenance from './Maintenance';
 
 function Posts() {
     return (
-        <div style={{margin: "3em", display: "inline-block"}}>
-            <h1>Página em construção.</h1>
-        </div>
+        <Maintenance />
     );
 }
 
-export default Posts
+export default Posts;
