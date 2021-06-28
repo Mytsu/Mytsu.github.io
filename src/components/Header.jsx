@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const colors = {
     font: '#fff',
@@ -12,15 +13,20 @@ const Container = styled.header`
     height: 3.5em;
     font-size: 16px;
     display: flex;
-    position: relative;
-    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    position: fixed;
 `;
 
 const Title = styled.h1`
     margin: 0;
-    margin-left: 0.75em;
+    margin-left: 1em;
+    padding-top: auto;
     font-size: 2em;
     align-self: center;
+
+    & > a:visited, a:link {
+        text-decoration: none;
+        color: ${colors.font};
+    }
 `;
 
 const Spacer = styled.div`
@@ -29,17 +35,32 @@ const Spacer = styled.div`
     height: 1px;
 `;
 
-const Link = styled.a`
+const NavLink = styled(Link)`
     color: ${colors.font};
     font-size: 1.15em;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
     align-self: center;
+    width: 4em;
+    text-align: center;
+    padding-bottom: 6px;
 
     &:visited,
     &:link {
         text-decoration: none;
         color: ${colors.font};
+    }
+
+    &:after {
+        display: block;
+        content: '';
+        border-bottom: 1px solid white;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+    }
+
+    &:hover:after {
+        transform: scaleX(1);
     }
 `;
 
@@ -47,11 +68,13 @@ export class Header extends Component {
     render() {
         return (
             <Container>
-                <Title>~</Title>
+                <Title>
+                    <Link to='/'>~</Link>
+                </Title>
                 <Spacer />
-                <Link href='#'>Link 1</Link>
-                <Link href='#'>Link 2</Link>
-                <Link href='#'>Link 3</Link>
+                <NavLink to='/projects'>Projects</NavLink>
+                <NavLink to='/posts'>Posts</NavLink>
+                <NavLink to='/about'>About</NavLink>
             </Container>
         );
     }

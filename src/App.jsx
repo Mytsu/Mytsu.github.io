@@ -1,14 +1,21 @@
 import React from 'react';
-import Header from './components/Header';
-import Particles from './components/Particles';
-import Introduction from './components/Introduction';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Header, Particles, Welcome } from './components';
+import About from './components/About';
+import Posts from './components/Posts';
+import Projects from './components/Projects';
 
 export default function App() {
     return (
-        <React.Fragment>
+        <Router>
             <Particles />
             <Header />
-            <Introduction />
-        </React.Fragment>
+            <Switch>
+                <Route exact={true} path="/" component={Welcome} />
+                <Route path="/projects" component={Projects} />
+                <Route path="/posts" component={Posts} />
+                <Route path="/about" component={About} />
+            </Switch>
+        </Router>
     );
 }
